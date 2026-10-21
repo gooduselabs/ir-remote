@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <!-- Thân remote (vùng an toàn 66dp ở giữa) -->
+    <path android:fillColor="#FFFFFF" android:pathData="M45,40h18a6,6 0 0 1 6,6v28a6,6 0 0 1 -6,6h-18a6,6 0 0 1 -6,-6v-28a6,6 0 0 1 6,-6z"/>
+    <path android:fillColor="#FF5A5F" android:pathData="M54,52m-5,0a5,5 0 1 1 10,0a5,5 0 1 1 -10,0"/>
+    <path android:fillColor="#0B0F1A" android:pathData="M46,63h6v4h-6zM56,63h6v4h-6zM46,70h6v4h-6zM56,70h6v4h-6z"/>
+    <!-- Sóng hồng ngoại -->
+    <path android:strokeColor="#3DD6F5" android:strokeWidth="3.5" android:strokeLineCap="round" android:fillColor="#00000000" android:pathData="M46,33 Q54,27 62,33"/>
+    <path android:strokeColor="#3DD6F5" android:strokeWidth="3.5" android:strokeLineCap="round" android:strokeAlpha="0.6" android:fillColor="#00000000" android:pathData="M41,27 Q54,18 67,27"/>
+</vector>

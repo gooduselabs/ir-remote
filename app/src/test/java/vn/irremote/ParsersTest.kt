@@ -77,3 +77,14 @@ class ParsersTest {
         assertEquals("Power", ButtonKeys.testCandidate(n))
     }
 }
+
+class LayoutTest {
+    @org.junit.Test fun mapsTvButtons() {
+        val n = listOf("Power", "Vol_up", "Vol_dn", "Ch_next", "Ch_prev", "Mute", "Up", "Down", "Left", "Right", "Ok", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Netflix")
+        val m = vn.irremote.ir.RemoteLayout.map(n) { it }
+        org.junit.Assert.assertEquals("Power", m.slots[vn.irremote.ir.Slot.POWER])
+        org.junit.Assert.assertEquals("Vol_dn", m.slots[vn.irremote.ir.Slot.VOL_DN])
+        org.junit.Assert.assertTrue(m.hasDpad && m.hasDigits)
+        org.junit.Assert.assertEquals(listOf("Netflix"), m.extras)
+    }
+}

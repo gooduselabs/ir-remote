@@ -9,6 +9,14 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.*
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.material3.*
@@ -25,12 +33,21 @@ class MainActivity : ComponentActivity() {
     private val micPerm = registerForActivityResult(ActivityResultContracts.RequestPermission()) { ok -> if (ok) startVoice() else vm.messages.tryEmit("Cần quyền micro để dùng giọng nói") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        val prefs = UiPrefs(this)
         setContent {
-            MaterialTheme(colorScheme = if (androidx.compose.foundation.isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()) {
+            AppTheme(prefs.mode.value, prefs.dynamic.value) {
+                if (!prefs.onboarded.value) { OnboardingContent(vm.irAvailable, prefs::finishOnboarding); return@AppTheme }
                 val nav = rememberNavController()
-                NavHost(nav, "home") {
-                    composable("home") { HomeScreen(vm, nav, onMic = ::requestVoice, listening = listening.value) }
+                val ease = tween<IntOffset>(320, easing = FastOutSlowInEasing)
+                NavHost(nav, "home", Modifier.background(MaterialTheme.colorScheme.background),
+                    enterTransition = { slideInHorizontally(ease) { it / 4 } + fadeIn(tween(320)) },
+                    exitTransition = { slideOutHorizontally(ease) { -it / 6 } + fadeOut(tween(200)) },
+                    popEnterTransition = { slideInHorizontally(ease) { -it / 6 } + fadeIn(tween(320)) },
+                    popExitTransition = { slideOutHorizontally(ease) { it / 4 } + fadeOut(tween(200)) }) {
+                    composable("home") { HomeScreen(vm, nav, prefs, onMic = ::requestVoice, listening = listening.value) }
                     composable("remote/{id}") { RemoteScreen(vm, it.arguments!!.getString("id")!!.toLong(), nav) }
                     composable("wizard") { WizardScreen(vm, nav) }
                     composable("macro/{id}") { MacroEditor(vm, it.arguments!!.getString("id")!!.toLong(), nav) }

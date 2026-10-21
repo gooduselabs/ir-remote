@@ -13,6 +13,16 @@ App Android điều khiển TV, đầu thu, quạt, điều hoà và máy chiế
 - Sao lưu và khôi phục bằng file JSON
 - Báo rõ khi máy không có cổng phát IR
 
+## Giao diện (v0.2)
+Giao diện Material 3 với bảng màu riêng, mặc định là chế độ tối, có chế độ sáng và màu động (Android 12+). Remote có D-pad tròn, phím bập bênh âm lượng/kênh, bàn phím số và nút nguồn đỏ. Khi bấm, phím có rung nhẹ, thu nhỏ và loé sáng. Màn điều hoà có vòng cung nhiệt độ kéo được. Ngoài ra có onboarding, trình dò mã có thanh tiến trình, splash screen và icon thích ứng.
+
+| | | |
+|---|---|---|
+| ![](docs/screens/01_home_dark.png) | ![](docs/screens/04_tv_remote_dark.png) | ![](docs/screens/05_ac_dark.png) |
+| ![](docs/screens/08_wizard_test_dark.png) | ![](docs/screens/09_scenes_dark.png) | ![](docs/screens/02_home_light.png) |
+
+Ảnh chụp tạo bằng Roborazzi (`ScreenshotTest`) khi chạy `testDebugUnitTest`, lưu vào `../screens`.
+
 ## Build
 ```
 export ANDROID_HOME=~/android-sdk

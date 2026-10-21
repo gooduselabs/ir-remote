@@ -4,8 +4,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-feature android:name="android.hardware.consumerir" android:required="false" />
     <queries><intent><action android:name="android.speech.RecognitionService" /></intent></queries>
-    <application android:name=".App" android:label="IR Remote VN" android:icon="@drawable/ic_remote"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="true">
+    <application android:name=".App" android:label="IR Remote VN" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.IrRemote.Splash" android:allowBackup="true">
         <activity android:name=".ui.MainActivity" android:exported="true" android:windowSoftInputMode="adjustResize">
             <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
         </activity>
@@ -13,7 +13,7 @@
             <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/fav_widget" />
         </receiver>
-        <service android:name=".widget.IrTileService" android:exported="true" android:label="Phát IR" android:icon="@drawable/ic_remote"
+        <service android:name=".widget.IrTileService" android:exported="true" android:label="Phát IR" android:icon="@drawable/ic_launcher_mono"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
         </service>

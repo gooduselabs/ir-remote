@@ -36,8 +36,17 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun buttons(id: Long) = dao.buttons(id)
     private fun toast(s: String?) { if (s != null) messages.tryEmit(s) }
 
-    fun send(b: ButtonEntity) { toast(a.sendButton(b)) }
-    fun sendCode(c: IrCode) { toast(runCatching { a.ir.send(c.toSignal()) }.getOrElse { "Mã lỗi: ${it.message}" }) }
+    val tick = MutableStateFlow(0L)
+    val lastAcSent = MutableStateFlow<String?>(null)
+    fun send(b: ButtonEntity) { tick.value = System.nanoTime(); toast(a.sendButton(b)) }
+    /** Nút nguồn nhanh trên thẻ thiết bị ở màn hình chính. */
+    fun quickPower(r: RemoteEntity) = viewModelScope.launch {
+        val btns = dao.buttonsNow(r.id)
+        if (r.deviceType == DeviceType.AC.name) { val s = acState(r); applyAc(r, s.copy(power = !s.power), btns); return@launch }
+        val n = ButtonKeys.find(VAction.POWER, btns.map { it.label })
+        btns.firstOrNull { it.label == n }?.let { send(it) } ?: toast("Remote này chưa có nút nguồn")
+    }
+    fun sendCode(c: IrCode) { tick.value = System.nanoTime(); toast(runCatching { a.ir.send(c.toSignal()) }.getOrElse { "Mã lỗi: ${it.message}" }) }
 
     // ---- Remote & nút ----
     suspend fun saveRemote(name: String, type: DeviceType, brand: String, codes: List<IrCode>, source: String): Long {
@@ -62,7 +71,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch { dao.upsertRemote(r.copy(acState = App.json.encodeToString(AcState.serializer(), s))) }
         val name = AcResolver.resolve(s, buttons.map { it.label })
         val b = buttons.firstOrNull { it.label == name }
-        if (b == null) toast("Không có mã phù hợp cho trạng thái này. Hãy thêm/học nút.") else { send(b); toast("Đã gửi: ${b.label}") }
+        if (b == null) toast("Không có mã phù hợp cho trạng thái này. Hãy thêm/học nút.") else { send(b); lastAcSent.value = b.label }
     }
 
     // ---- Cảnh / macro ----
