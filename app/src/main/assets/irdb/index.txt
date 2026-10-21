@@ -1,0 +1,47 @@
+ACs/Daikin/Daikin_AC_unknownModel.ir
+ACs/Daikin/Daikin_ARC480A41.ir
+ACs/Electra/electra_smart.ir
+ACs/Ferroli/Ferroli.ir
+ACs/Panasonic/Panasonic_CS-UE12RKE.ir
+ACs/Pioneer/PioneerMiniSplit.ir
+ACs/Toshiba/Toshiba_RASB10BKVG-E.ir
+DVB-T/Manhattan/MANHATTAN_SX_FREESAT.ir
+DVB-T/Tesla/Tesla_TE-300.ir
+Fans/Domo/DOMO_DO8149.ir
+Fans/Dyson/Dyson_TP7A.ir
+Fans/Klarstein/Klarstein_Sommwerwind.ir
+Fans/Mitsubishi/Mitsubishi_R30J-HRV.ir
+Fans/ProBreeze/ProBreeze_PBF04.ir
+Fans/Seville_Classics/SC-UltraSlimLine-Oscillating-Tower-Fan-5-Buttons-EHF10119PB.ir
+Fans/Seville_Classics/SC-UltraSlimLine-Oscillating-Tower-Fan-Touch-Controls-EHF10201T.ir
+Fans/Seville_Classics/SC-UltraSlimLine-Oscillating-Tower-Fan.ir
+Projectors/Acer/Acer_XL2530 IR29033.ir
+Projectors/Canon/CANON_LV-X320.ir
+Projectors/Epson/Epson-EB-X12.ir
+Projectors/NEC/NEC_RU_M124.ir
+Projectors/Sony/Sony RM-PJ30/Sony RM-PJ30 ID-1.ir
+Projectors/Sony/Sony RM-PJ30/Sony RM-PJ30 ID-2.ir
+Projectors/Sony/Sony RM-PJ30/Sony RM-PJ30 ID-3.ir
+Projectors/Sony/Sony RM-PJ30/Sony RM-PJ30 ID-4.ir
+Projectors/Sony/Sony_RM_PJ1000.ir
+Projectors/TOPTRO/TOPTRO_TR25.ir
+Projectors/Wanbo/Wanbo_T6_Max.ir
+Projectors/Yoton/Yoton Y3.ir
+TVs/Bush/BUSH_TV_DLED32287HDCNTDFVP.ir
+TVs/ContinentalEdison/ContinentalEdison_CELD55SQLDV24B6.ir
+TVs/Crown/Crown_RC647340.ir
+TVs/Grundig/Grundig_TP750C.ir
+TVs/Hitachi/Hitachi_CLE-1031.ir
+TVs/Hotels/Hilton_Connected_Room_Remote.ir
+TVs/JVC/JVC_LT-49HW97U.ir
+TVs/Magnavox/MAGNAVOX_CD130MW8.ir
+TVs/Philips/Philips_40PFL6533_F7D.ir
+TVs/SEG/SEG_MALTA.ir
+TVs/Samsung/Samsung_AA59-00484A.ir
+TVs/Samsung/Samsung_BN59-01330C.ir
+TVs/Sanyo/Sanyo UR77EC2703-3.ir
+TVs/Sanyo/Sanyo_ds32224.ir
+TVs/Technika/TECHNIKA_22880.ir
+TVs/Tevion/Tevion_3221TS.ir
+TVs/Toshiba/Toshiba CT 8560.ir
+TVs/Vizio/Vizio_VX32L.ir

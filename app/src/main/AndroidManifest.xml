@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.TRANSMIT_IR" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-feature android:name="android.hardware.consumerir" android:required="false" />
+    <queries><intent><action android:name="android.speech.RecognitionService" /></intent></queries>
+    <application android:name=".App" android:label="IR Remote VN" android:icon="@drawable/ic_remote"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="true">
+        <activity android:name=".ui.MainActivity" android:exported="true" android:windowSoftInputMode="adjustResize">
+            <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
+        </activity>
+        <receiver android:name=".widget.FavWidgetReceiver" android:exported="true" android:label="Nút IR yêu thích">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/fav_widget" />
+        </receiver>
+        <service android:name=".widget.IrTileService" android:exported="true" android:label="Phát IR" android:icon="@drawable/ic_remote"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+        </service>
+    </application>
+</manifest>
